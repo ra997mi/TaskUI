@@ -1,0 +1,27 @@
+<div class="login-main"></div>
+<div class="container signin-content">
+  <div class="card mcard">
+    <div class="card-header card-header-danger">
+      <h4 class="card-title">تسجيل الدخول</h4>
+      <p class="card-category">قم بتسجيل الدخول للاستخدام لوحة التحكم</p>
+    </div>
+    <div class="card-body">
+      <form role="form" #f="ngForm" (ngSubmit)="signIn()">
+        <input autocomplete="off" class="form-control" placeholder="المعرف" type="text" name="username"
+          [(ngModel)]="username" required>
+        <input autocomplete="off" class="form-control" placeholder="كلمة المرور" [type]="show ? 'text' : 'password'"
+          name="password" [(ngModel)]="password" required>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" (click)="ckPassword()">
+            اظهار كلمة المرور
+            <span class="form-check-sign">
+              <span class="check"></span>
+            </span>
+          </label>
+        </div>
+        <button type="submit" [disabled]="!f.valid" class="btn btn-danger">تسجيل الدخول</button>
+      </form>
+    </div>
+  </div>
+</div>

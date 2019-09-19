@@ -1,0 +1,39 @@
+<div class="row" style="direction: rtl">
+  <div class="col-md-8">
+    <mat-form-field>
+      <mat-label>المحاذاة</mat-label>
+      <mat-select name="orientation" [(ngModel)]="orientation">
+        <mat-option value="any">غير محدد</mat-option>
+        <mat-option value="landscape">افقي</mat-option>
+        <mat-option value="portrait">عامودي</mat-option>
+        <mat-option value="square">متساوي</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-2">
+    <mat-form-field>
+      <mat-label>اللون</mat-label>
+      <mat-select (selectionChange)="onChange($event.value)" [ngStyle]="{'background-color':selectedColor}" name="color"
+        [(ngModel)]="color">
+        <mat-option value="any">غير محدد</mat-option>
+        <mat-option *ngFor="let color of colors.colorsMap" [value]="color.name"
+          [ngStyle]="{'background-color':color.value}">
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-2" style="text-align: center">
+    <button (click)="search()" mat-raised-button class="btn btn-danger btn-round">
+      بحث</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4" *ngFor="let item of media">
+    <div class="card" style="margin:5px">
+      <img class="card-img-top" src="{{item.path}}">
+      <div class="card-body">
+        <h5 class="card-title">{{item.title}}</h5>
+      </div>
+    </div>
+  </div>
+</div>

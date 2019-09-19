@@ -1,0 +1,37 @@
+<div class="row" style="direction: rtl">
+  <div class="col-md-10">
+    <mat-form-field>
+      <input autocomplete="off" matInput placeholder="اقصى حد للملفات" name="limit" [(ngModel)]="limit" required>
+    </mat-form-field>
+  </div>
+  <div class="col-md-2" style="text-align: center">
+    <button (click)="search()" mat-raised-button class="btn btn-danger btn-round">
+      بحث</button>
+  </div>
+</div>
+
+<div class="row">
+  <div *ngFor="let item of imgs" class="col-md-4">
+    <div class="card" style="margin:5px">
+      <img class="card-img-top" src="{{item.path}}">
+      <div class="card-body">
+        <h5 class="card-title">{{item.title}}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div *ngFor="let item of music" style="margin: 5px">
+    <mat-basic-audio-player audioUrl="{{item.path}}" [title]="item.title" displayTitle="true"
+      displayVolumeControls="true">
+    </mat-basic-audio-player>
+  </div>
+</div>
+
+<div class="row">
+  <div *ngFor="let item of vids" style="width: 45% ; height: 45%; margin: 8px;">
+    <mat-video [overlay]="true" [autoplay]="false" [preload]="false" title="{{item.title}}" src="{{item.path}}">
+    </mat-video>
+  </div>
+</div>

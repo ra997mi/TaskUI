@@ -1,0 +1,41 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header card-header-danger">
+        <h4 class="card-title" style="text-align: center">قائمة البحث</h4>
+        <p class="card-category" style="text-align: center">البحث عن الصور او الفيدوات او الاغاني</p>
+      </div>
+      <div class="card-body">
+        <div class="row" style="direction: rtl">
+          <div class="col-md-8">
+            <mat-form-field>
+              <input autocomplete="off" matInput placeholder="العنوان" name="title" [(ngModel)]="title">
+            </mat-form-field>
+          </div>
+          <div class="col-md-4" style="text-align: center">
+            <mat-form-field>
+              <mat-label>الصنف</mat-label>
+              <mat-select name="type" [(ngModel)]="type">
+                <mat-option value="all">كل الملفات</mat-option>
+                <mat-option value="image">الصور</mat-option>
+                <mat-option value="video">الفيدوات</mat-option>
+                <mat-option value="music">الاغاني</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div *ngIf="type == 'all'">
+          <app-all [title]='title'></app-all>
+        </div>
+        <div *ngIf="type == 'image'">
+          <app-image [title]='title'></app-image>
+        </div>
+        <div *ngIf="type == 'video'">
+          <app-video [title]='title'></app-video>
+        </div>
+        <div *ngIf="type == 'music'">
+          <app-music [title]='title'></app-music>
+        </div>
+      </div>
+    </div>
+  </div>

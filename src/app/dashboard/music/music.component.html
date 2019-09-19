@@ -1,0 +1,18 @@
+<div class="row" style="direction: rtl">
+  <div class="col-md-10">
+    <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options">
+    </ng5-slider>
+  </div>
+  <div class="col-md-2" style="text-align: center">
+    <button (click)="search()" mat-raised-button class="btn btn-danger btn-round">
+      بحث</button>
+  </div>
+</div>
+
+<div class="row">
+  <div *ngFor="let item of media" style="margin: 5px">
+    <mat-basic-audio-player audioUrl="{{item.path}}" [title]="item.title" [displayTitle]="true"
+      [displayVolumeControls]="true">
+    </mat-basic-audio-player>
+  </div>
+</div>
