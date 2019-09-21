@@ -33,17 +33,15 @@ export class LoginComponent {
     this.login.Username = this.username;
     this.login.Password = this.enc.encryptPassword('24', this.password);
     this.httpService.login(this.login).subscribe(res => {
-      console.log(res);
       if (res == 'Success') {
         this.storage.set(STORAGE_KEY, res);
         this.router.navigate(['/dashboard']);
       }
-      else {
-        this.toastr.warning('يرجى التاكد من معلومات الدخول', 'معلومات الدخول');
-      }
     }, error => {
-      console.log(error);
-      this.toastr.error('حدث خطا اثناء الاتصال', 'خطأ');
+		if(error.statusText == 'Not Found')
+			this.toastr.warning('يرجى التاكد من معلومات الدخول', 'معلومات الدخول');
+		else
+			this.toastr.error('حدث خطا اثناء الاتصال', 'خطأ');
     });
   }
 }

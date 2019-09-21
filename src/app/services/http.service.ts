@@ -39,16 +39,16 @@ export class HttpService {
     return this.httpClient.delete(this.SERVER + "api/notifies" + "/" + id, { responseType: 'text' });
   }
 
-  searchAll(title: string, limit?: number) {
+  searchAll(title?: string, limit?: number) {
     var query = "";
-    if (title != null && title != undefined && title != "") {
-      query = query + title;
-      if (limit != null && limit != undefined) {
-        query = query + '/' + limit;
-        return this.httpClient.get(this.SERVER + `api/media/all/${query}`);
-      }
+    if (title == null || title == "" || title == undefined) {
+      title = "any";
     }
-    return this.httpClient.get(this.SERVER + `api/media/all`);
+	query = query + title;
+	if (limit != null && limit != undefined) {
+        query = query + '/' + limit;
+	}	
+    return this.httpClient.get(this.SERVER + `api/media/all/${query}`);
   }
 
   searchMusic(title?: string, min?: number, max?: number) {
