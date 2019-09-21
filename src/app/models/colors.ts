@@ -45,6 +45,10 @@ export class Colors {
     {
       name: 'Black',
       value: '#000000'
+    },
+	    {
+      name: 'White',
+      value: '#ffffff'
     }
   ];
 }
